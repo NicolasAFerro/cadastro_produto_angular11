@@ -1,0 +1,46 @@
+<app-product
+  [sonCategories]="categories"
+  [product]="product"
+  (saveEmitter)="saveProduct()"
+></app-product>
+<div class="container w-75">
+  <div class="display-6">Produtos Cadastrados:</div>
+  <div class="row">
+    <div class="col-md-10 offset-md-1">
+      <table class="table" id="productsTable">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nome</th>
+            <th scope="col" class="d-none d-md-table-cell">Descrição</th>
+            <th scope="col">Preço</th>
+            <th scope="col">Categoria</th>
+            <th scope="col" class="d-none d-md-table-cell">Opções</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let prod of products">
+            <td>{{ prod.id }}</td>
+            <td>{{ prod.name }}</td>
+            <td>{{ prod.description }}</td>
+            <!--<td>{{ prod.price | number : "1.2-2" }}</td>-->
+            <td>{{ prod.price | currency : "BRL" }}</td>
+            <td>{{ prod.category.name }}</td>
+            <td>
+              <span
+                class="badge text-bg-primary d-none d-md-table-cell me-1"
+                *ngIf="prod.newProduct"
+                >L</span
+              >
+              <span
+                class="badge text-bg-success d-none d-md-table-cell me-1"
+                *ngIf="prod.promotion"
+                >P</span
+              >
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
