@@ -30,4 +30,8 @@ export class ProductComponent {
     // console.log(`\n new: ${this.product.newProduct}\n categoria: ${this.product.category.name}`);
     // console.log(`\n ${this.product.category.id} `);
   }
+
+  cancel() {
+    this.product = {} as Product;
+  }
 }
